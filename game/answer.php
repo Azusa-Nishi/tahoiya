@@ -1,5 +1,7 @@
 ﻿<?php
 $perin = [];
+$point = [];
+$count = [];
 $per = $_POST['per'];
 $dic = $_POST['dic'];
 for($i = 0; $i < $per; $i++){
@@ -49,19 +51,67 @@ array_multisort($sortkey, SORT_ASC, $selorg);
 	}
 	echo "</tr>\n";
 	for($i = 0; $i < $per-1; $i++){
+		$point[$i] = 0;
 		echo "<tr>\n";
 		echo "<td>子".($i+1)."</td>";
 		for($j = 0; $j < $per; $j++){
 			if($j == $selans[$i]){
 				echo "<td>〇</td>\n";
+				if($i == $j){
+					$point[$i]--;
+				}else{
+					$count[$i+1]++;
+				}
+				if($j == 0){
+					$point[$i]++;
+				}
 			}else{
 				echo "<td>&nbsp;</td>\n";
+				if($j == 0){
+					$count[0]++;
+				}
 			}
 		}
 		echo "</tr>\n";
 	}
+	$min = 9999;
+	$minw = 0;
+	$max = 0;
+	$minw = 0;
+	for($i = 0; $i < $per-1; $i++){
+		if($min > $count[$i]){
+			$min = $count;
+			$minw = $i;
+		}
+		if($max < $count[$i]){
+			$max = $count;
+			$maxw++;
+		}
+	}
+	if($minw == 0){
+		$point[0] = 2;
+	}
+var_dump($max, $maxw, $count);
+	for($i = 0; $i < $per-1; $i++){
+		if($max == $count[$i]){
+			$point[$i+1] += 2/$maxw;
+		}
+	}
 ?>
 	</table><br>
+	Tenshuu<br>
+	<table border=1>
+	<tr><td>oya</td>
+<?php
+	for($i = 0; $i < $per-1; $i++){
+		echo "<td>Ko".($i+1)."</td>";
+	}
+	echo "</tr><tr>\n";
+	for($i = 0; $i < $per; $i++){
+		echo "<td>".$point[$i]."</td>";
+	}
+?>
+	</table>
 	<input type="submit" value="もう一度" />
 	</form>
 	<form action="../tahoiya.html" id="people" method="post">
