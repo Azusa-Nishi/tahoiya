@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="../tahoiya.css">
+	<title>たほいやゲーム(親)</title>
+</head>
+<body>
+	<p>遊ぶ人数を選んでね</p>
+	<form action="input.php" id="people" method="post">
+		<input type="radio" name="per" value="3" checked> 3人 <br>
+		<input type="radio" name="per" value="4"> 4人 <br>
+		<input type="radio" name="per" value="5"> 5人 <br>
+		<input type="radio" name="per" value="6"> 6人 <br>
+		<input type="radio" name="per" value="7"> 7人 <br>
+		<input type="radio" name="per" value="8"> 8人 <br>
+		<input type="radio" name="per" value="9"> 9人 <br>
+		<input type="radio" name="per" value="10"> 10人 <br>
+<hr>
+		選んだら親(ゲームの進行係)が他のプレイヤーに見られないように下の二つを入力しよう。<br>
+		辞書の言葉はみんなが知らなさそうなものを入れ、その意味には簡潔に辞書の意味を入れよう。<br>
+		辞書の言葉
+		<input type="text" name="dic" ><br>
+		その意味
+		<input type="text" name="word" ><br>
+		<p>
+		決まったら下のボタンを押してから一人目のプレイヤーに渡してね。<br>
+		<input type="hidden" name="nowper" value="0"><br>
+		<input type="submit" value="子の一人目へ" />
+		</p>
+	</form>
+</body>
+</html>

@@ -1,0 +1,15 @@
+﻿.parent { /*親要素*/
+    position: relative;
+}
+
+    .parent p {
+        padding-right: 120px;
+        padding-left: 120px;
+        padding-bottom:80px;
+    }
+
+body {
+    background-image: url("image/background.png");
+}
+
+#main {font-size: large}
