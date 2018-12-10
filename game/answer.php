@@ -61,12 +61,12 @@ array_multisort($sortkey, SORT_ASC, $selorg);
 			if($j == $selans[$i]){
 				echo "<td>〇</td>\n";
 				if($i+1 == $j){
-					$point[$j]--;
-					echo "子".$j."さん自爆!減点1<br>";
+					$point[$j] -= 100;
+					echo "子".$j."さん自爆!減点100<br>";
 				}
 				if($j == 0){
-					$point[$i+1]++;
-					echo "子".($i+1)."さん、正解!加点1<br>";
+					$point[$i+1] += 10;
+					echo "子".($i+1)."さん、正解!加点10<br>";
 				}
 				$count[$j]++;
 			}else{
@@ -78,22 +78,22 @@ array_multisort($sortkey, SORT_ASC, $selorg);
 	$min = 9999;
 	$minw = 0;
 	$max = 0;
-	$minw = 0;
+	$maxw = 0;
 	for($i = 0; $i < $per-1; $i++){
 		if($min > $count[$i]){
 			$min = $count[$i];
 			$minw = $i;
 		}
-		if($max < $count[$i]){
+		if($max <= $count[$i]){
 			$max = $count[$i];
 			$maxw++;
 		}
 	}
 	if($minw == 0){
-		$point[0] = 2;
-		echo "親さん、だまし成功!加点2<br>";
+		$point[0] = 20;
+		echo "親さん、だまし成功!加点20<br>";
 	}
-	$poi = floor(2/$maxw*10)/10;
+	$poi = floor(20/$maxw);
 	for($i = 1; $i < $per; $i++){
 		if($max == $count[$i]){
 			$point[$i] += $poi;
