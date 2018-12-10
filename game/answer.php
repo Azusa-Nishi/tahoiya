@@ -79,19 +79,23 @@ array_multisort($sortkey, SORT_ASC, $selorg);
 	$minw = 0;
 	$max = 0;
 	$maxw = 0;
-	for($i = 0; $i < $per-1; $i++){
+	for($i = 0; $i < $per; $i++){
 		if($min > $count[$i]){
 			$min = $count[$i];
 			$minw = $i;
 		}
 		if($max <= $count[$i]){
 			$max = $count[$i];
-			$maxw++;
 		}
 	}
 	if($minw == 0){
 		$point[0] = 20;
 		echo "親さん、だまし成功!加点20<br>";
+	}
+	for($i = 0; $i < $per; $i++){
+		if($max == $count[$i]){
+			$maxw++;
+		}
 	}
 	$poi = floor(20/$maxw);
 	for($i = 1; $i < $per; $i++){
